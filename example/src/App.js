@@ -1,18 +1,27 @@
-import React, {StyleSheet, useState} from 'react'
+import React, {StyleSheet, useState, useRef} from 'react'
 import { StackedCarousel } from 'react-stacked-carousel'
 import 'react-stacked-carousel/dist/index.css';
 const App = () => {
+  const carouselRef = useRef();
+
   const [card, setCard] = useState(null);
   const onCardChange = (event) => {
     console.log("Card", event);
   }
-  
+  const rotateRight = () =>{
+    carouselRef.current.rotateRightExternally()
+  }
+  const rotateLeft = () =>{
+    carouselRef.current.rotateLeftExternally()
+  }
   return (
     <div className="main">
-
+      <button onClick={rotateRight}>Rotate right</button>
+      <button onClick={rotateLeft}>Rotate left</button>
       <div>
         <h3>Carousel with images as children</h3>
         <StackedCarousel
+          ref = {carouselRef}
           autoRotate={false}
           onCardChange={onCardChange}>
           <img key="img1" src="https://placeimg.com/640/480/arch" />

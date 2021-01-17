@@ -28,8 +28,9 @@ const App = () => {
   const [card, setCard] = useState(null);
   const onCardChange = (event) => {
     console.log("Card", event);
+    console.log("lol")
   }
-  
+
   return (
     <div className="main">
       <StackedCarousel
